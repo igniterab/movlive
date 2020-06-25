@@ -3,8 +3,7 @@ from django.shortcuts import render
 
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+
 
 user_ratings = pd.read_csv("C:\\Users\\Ashish Bhardwaj\\Desktop\\m\\movie\\movie\\ratings.csv")
 tags = pd.read_csv("C:\\Users\\Ashish Bhardwaj\\Desktop\\m\\movie\\movie\\tags.csv")
@@ -22,7 +21,7 @@ movies_title['title'] = movies_title['title'].apply(lambda x: x.strip())
 links = pd.read_csv("C:\\Users\\Ashish Bhardwaj\\Desktop\\m\\movie\\movie\\links.csv")
 df = pd.merge(user_ratings , movies_title , on="movieId")
 
-sns.set_style = 'white' #this will give me a white background
+#sns.set_style = 'white' #this will give me a white background
 df.groupby('title')['rating'].mean().sort_values(ascending=False)
 ratings = pd.DataFrame(df.groupby('title')['rating'].mean())
 ratings['No. of rating'] = pd.DataFrame(df.groupby('title')['rating'].count())
